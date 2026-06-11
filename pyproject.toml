@@ -1,0 +1,25 @@
+[project]
+name = "penguin-analysis"
+version = "0.1.0"
+description = "A dummy module that analyses the Palmer Penguins dataset, documented with great-docs and served by a Shiny app."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Mickaël Canouil" }]
+dependencies = [
+  "palmerpenguins>=0.1.4",
+  "polars>=1.0",
+  "plotnine>=0.13",
+  "pyarrow>=16.0",
+]
+
+[project.optional-dependencies]
+app = ["shiny>=1.0"]
+dev = ["great-docs>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/penguin_analysis"]
