@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-app = ["shiny>=1.0"]
+app = ["shiny>=1.0", "libsass>=0.23"]
 dev = ["great-docs>=0.6"]
 
 [build-system]

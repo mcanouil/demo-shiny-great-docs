@@ -10,6 +10,7 @@ from pathlib import Path
 
 import polars as pl
 from shiny import App, reactive, render, ui
+from shiny.ui import Theme
 from starlette.applications import Starlette
 from starlette.routing import Mount
 from starlette.staticfiles import StaticFiles
@@ -19,6 +20,48 @@ import penguin_analysis as pa
 _DATA = pa.load_penguins()
 _SPECIES = sorted(_DATA["species"].unique().to_list())
 _DOCS_DIR = Path(__file__).parent / "docs"
+
+_LOGO_SVG = ui.HTML(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"'
+    ' style="vertical-align:middle;margin-right:8px" aria-hidden="true">'
+    '<rect x="0" y="0" width="28" height="28" rx="6" fill="rgba(255,255,255,0.15)"/>'
+    '<circle cx="8" cy="20" r="2.5" fill="white"/>'
+    '<circle cx="14" cy="12" r="2.5" fill="white"/>'
+    '<circle cx="20" cy="16" r="2.5" fill="#fbbf24"/>'
+    '</svg>'
+)
+
+_THEME = (
+    Theme("shiny")
+    .add_rules("""
+    $primary: #0f766e;
+    $secondary: #d97706;
+    $light: #f0fdfa;
+    """)
+    .add_rules("""
+    .navbar {
+      background-color: #0f766e !important;
+    }
+    .navbar-brand,
+    .navbar-brand span,
+    .navbar .nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+    }
+    .navbar-brand:hover,
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      color: #ffffff !important;
+    }
+    .navbar .nav-link.active {
+      border-bottom-color: #fbbf24 !important;
+    }
+    .bslib-sidebar-layout > .sidebar {
+      background-color: #f0fdfa !important;
+      border-right: 1px solid #99f6e4 !important;
+    }
+    """
+    )
+)
 
 app_ui = ui.page_navbar(
     ui.nav_panel(
@@ -50,7 +93,8 @@ app_ui = ui.page_navbar(
     ui.nav_control(
         ui.a("Documentation", href="/docs/", target="_blank"),
     ),
-    title="Palmer Penguins",
+    title=ui.tags.span(_LOGO_SVG, "Palmer Penguins"),
+    theme=_THEME,
     id="navbar",
 )
 

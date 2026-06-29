@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" role="img" aria-label="Palmer Penguins">
+  <rect x="0" y="0" width="36" height="36" rx="7" fill="#0f766e"/>
+  <circle cx="10" cy="25" r="3" fill="white"/>
+  <circle cx="18" cy="14" r="3" fill="white"/>
+  <circle cx="26" cy="20" r="3" fill="#fbbf24"/>
+</svg>

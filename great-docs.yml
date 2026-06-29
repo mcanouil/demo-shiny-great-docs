@@ -28,14 +28,13 @@ dynamic: false
 # Logo & Favicon
 # ---------------
 # Point to a single logo file (replaces the text title in the navbar):
-# logo: assets/logo.svg
+logo: assets/logo.svg
+show_title: true
 #
 # For light/dark variants:
 # logo:
 #   light: assets/logo-light.svg
 #   dark: assets/logo-dark.svg
-#
-# To show the text title alongside the logo, add: show_title: true
 
 # Author Information
 # ------------------
